@@ -5,35 +5,33 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 
-
 if __name__ == "__main__":
- if len(sys.argv) != 2:
-    print("Usage: Flightscsv <file>", file=sys.stderr)
-    sys.exit(-1)
+    if len(sys.argv) != 4:
+        print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
+        sys.exit(-1)
+
     # Create SparkSession
+    spark = SparkSession.builder.appName("DW House").getOrCreate()
 
-spark = SparkSession.builder.appName("DW House").getOrCreate()
+    # Read file paths from command-line arguments
+    customer_parquet = sys.argv[1]
+    city_parquet = sys.argv[2]
+    sales_parquet = sys.argv[3]
 
+    # Load data from Parquet files
+    customer_df = spark.read.parquet(customer_parquet)
+    city_df = spark.read.parquet(city_parquet)
+    sales_df = spark.read.parquet(sales_parquet)
+
+    print("Number of rows in customer_df:", customer_df.count())
+    print("Number of rows in city_df:", city_df.count())
+    print("Number of rows in sales_df:", sales_df.count())
+
+    customer_df.show(5)
+    city_df.show(5)
+    sales_df.show(5)
    
-data_source = sys.argv[1]
-fl_df = spark.read.format("parquet").option("header", "true").load(data_source)
 
-# # Load data from Parquet files
-# customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
-# city_df = spark.read.parquet("/home/vagrant/Documents/db/dimension_city.parquet")
-# sales_df = spark.read.parquet("/home/vagrant/Documents/db/fact_sale.parquet")
-
-customer_df = spark.read.parquet('DimCustomer.parquet')
-city_df = spark.read.parquet('dimension_city.parquet')
-sales_df = spark.read.parquet('fact_sale.parquet')
-print("Number of rows in customer_df:", customer_df.count())
-print("Number of rows in city_df:", city_df.count())
-print("Number of rows in sales_df:", sales_df.count())
-
-
-customer_df.show(5)
-city_df.show(5)
-sales_df.show(5)
 
 # Create temporary views for SQL querying
 customer_df.createOrReplaceTempView("customer")
