@@ -12,9 +12,9 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Load data from Parquet files
-customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
-city_df = spark.read.parquet("/home/vagrant/Documents/db/dimension_city.parquet")
-sales_df = spark.read.parquet("/home/vagrant/Dchangedocuments/db/fact_sale.parquet")
+customer_df = spark.read.parquet("DimCustomer.parquet")
+city_df = spark.read.parquet("dimension_city.parquet")
+sales_df = spark.read.parquet("fact_sale.parquet")
 
 customer_df.show(5)
 city_df.show(5)
