@@ -1,15 +1,22 @@
 from pyspark.sql import SparkSession
 
-
+import sys
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 
-# Create SparkSession
-spark = SparkSession.builder \
-    .appName("DW House") \
-    .config("spark.some.config.option", "some-value") \
-    .getOrCreate()
+
+if __name__ == "__main__":
+ if len(sys.argv) != 2:
+    print("Usage: Flightscsv <file>", file=sys.stderr)
+    sys.exit(-1)
+    # Create SparkSession
+
+spark = SparkSession.builder.appName("DW House").getOrCreate()
+
+   
+data_source = sys.argv[1]
+fl_df = spark.read.format("csv").option("header", "true").load(data_source)
 
 # # Load data from Parquet files
 # customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
