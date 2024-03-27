@@ -12,14 +12,14 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Load data from Parquet files
-customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
+# customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
 city_df = spark.read.parquet("/home/vagrant/Documents/db/dimension_city.parquet")
 sales_df = spark.read.parquet("/home/vagrant/Documents/db/fact_sale.parquet")
 
 # customer_df = spark.read.parquet("DimCustomer.parquet")
 # city_df = spark.read.parquet("dimension_city.parquet")
 # sales_df = spark.read.parquet("fact_sale.parquet")
-print("Number of rows in customer_df:", customer_df.count())
+# print("Number of rows in customer_df:", customer_df.count())
 print("Number of rows in city_df:", city_df.count())
 print("Number of rows in sales_df:", sales_df.count())
 
