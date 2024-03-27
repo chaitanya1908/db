@@ -38,5 +38,6 @@ date_df = spark.sql("""
 """)
 
 date_df.createOrReplaceTempView("date")
+date_df.show(5)
 
 spark.stop()
