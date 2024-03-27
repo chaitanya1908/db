@@ -16,7 +16,7 @@ spark = SparkSession.builder.appName("DW House").getOrCreate()
 
    
 data_source = sys.argv[1]
-fl_df = spark.read.format("csv").option("header", "true").load(data_source)
+fl_df = spark.read.format("parquet").option("header", "true").load(data_source)
 
 # # Load data from Parquet files
 # customer_df = spark.read.parquet("/home/vagrant/Documents/db/DimCustomer.parquet")
