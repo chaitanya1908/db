@@ -6,9 +6,9 @@ from pyspark.sql.functions import *
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
-        sys.exit(-1)
+    # if len(sys.argv) != 4:
+    #     print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
+    #     sys.exit(-1)
 
     # Create SparkSession
     spark = SparkSession.builder.appName("DW House").getOrCreate()
