@@ -4,11 +4,6 @@ import sys
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
-
-# if len(sys.argv) != 4:
-#     print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
-#     sys.exit(-1)
-
 # Create SparkSession
 spark = SparkSession.builder.appName("DW House").getOrCreate()
 
@@ -40,12 +35,12 @@ sales_df.createOrReplaceTempView("sales")
 # Creating Date Table from Sales Table
 date_df = spark.sql("""
     SELECT DISTINCT
-        InvoiceDate AS Date,
-        WEEKOFYEAR(InvoiceDate) AS WeekNumber,
-        DAYOFWEEK(InvoiceDate) AS DayOfWeek,
-        MONTH(InvoiceDate) AS Month,
-        QUARTER(InvoiceDate) AS Quarter,
-        YEAR(InvoiceDate) AS Year
+        InvoiceDateKey AS Date,
+        WEEKOFYEAR(InvoiceDateKey) AS WeekNumber,
+        DAYOFWEEK(InvoiceDateKey) AS DayOfWeek,
+        MONTH(InvoiceDateKey) AS Month,
+        QUARTER(InvoiceDateKey) AS Quarter,
+        YEAR(InvoiceDateKey) AS Year
     FROM sales
 """)
 
