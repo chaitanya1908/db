@@ -5,31 +5,30 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 
-if __name__ == "__main__":
-    # if len(sys.argv) != 4:
-    #     print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
-    #     sys.exit(-1)
+# if len(sys.argv) != 4:
+#     print("Usage: spark-submit dw.py <customer_parquet> <city_parquet> <sales_parquet>", file=sys.stderr)
+#     sys.exit(-1)
 
-    # Create SparkSession
-    spark = SparkSession.builder.appName("DW House").getOrCreate()
+# Create SparkSession
+spark = SparkSession.builder.appName("DW House").getOrCreate()
 
-    # Read file paths from command-line arguments
-    customer_parquet = sys.argv[1]
-    city_parquet = sys.argv[2]
-    sales_parquet = sys.argv[3]
+# Read file paths from command-line arguments
+customer_parquet = sys.argv[1]
+city_parquet = sys.argv[2]
+sales_parquet = sys.argv[3]
 
-    # Load data from Parquet files
-    customer_df = spark.read.parquet(customer_parquet)
-    city_df = spark.read.parquet(city_parquet)
-    sales_df = spark.read.parquet(sales_parquet)
+# Load data from Parquet files
+customer_df = spark.read.parquet(customer_parquet)
+city_df = spark.read.parquet(city_parquet)
+sales_df = spark.read.parquet(sales_parquet)
 
-    print("Number of rows in customer_df:", customer_df.count())
-    print("Number of rows in city_df:", city_df.count())
-    print("Number of rows in sales_df:", sales_df.count())
+print("Number of rows in customer_df:", customer_df.count())
+print("Number of rows in city_df:", city_df.count())
+print("Number of rows in sales_df:", sales_df.count())
 
-    customer_df.show(5)
-    city_df.show(5)
-    sales_df.show(5)
+customer_df.show(5)
+city_df.show(5)
+sales_df.show(5)
    
 
 
