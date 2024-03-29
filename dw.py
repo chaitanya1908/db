@@ -26,11 +26,15 @@ city_df.show(5)
 sales_df.show(5)
    
 
+customer_df.write.jdbc(url="jdbc:mysql://localhost:3306/dw", table="Customer", mode="overwrite", properties={"user": "root", "password": "Chaitanya18"})
+city_df.write.jdbc(url="jdbc:mysql://localhost:3306/dw", table="City", mode="overwrite", properties={"user": "root", "password": "Chaitanya18"})
+sales_df.write.jdbc(url="jdbc:mysql://localhost:3306/dw", table="Sales", mode="overwrite", properties={"user": "root", "password": "Chaitanya18"})
 
-# Create temporary views for SQL querying
-customer_df.createOrReplaceTempView("customer")
-city_df.createOrReplaceTempView("city")
-sales_df.createOrReplaceTempView("sales")
+
+# # Create temporary views for SQL querying
+# customer_df.createOrReplaceTempView("customer")
+# city_df.createOrReplaceTempView("city")
+# sales_df.createOrReplaceTempView("sales")
 
 # Creating Date Table from Sales Table
 date_df = spark.sql("""
@@ -41,10 +45,10 @@ date_df = spark.sql("""
         MONTH(InvoiceDateKey) AS Month,
         QUARTER(InvoiceDateKey) AS Quarter,
         YEAR(InvoiceDateKey) AS Year
-    FROM sales
+    FROM Sales
 """)
 
-date_df.createOrReplaceTempView("date")
+# date_df.createOrReplaceTempView("Date")
 date_df.show(5)
 
 spark.stop()
