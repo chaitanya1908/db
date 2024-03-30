@@ -24,12 +24,11 @@ print("Number of rows in sales_df:", sales_df.count())
 customer_df.show(5)
 city_df.show(5)
 sales_df.show(5)
-#    .option("password", "Chaitanya18")
+#    .option("password", "Chaitanya18").option("url", "jdbc:mysql://LAPTOP-C132R785.ht.home:3306/dw")
 
-customer_df.write.format("jdbc").option("url", "jdbc:mysql://LAPTOP-C132R785.ht.home:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
-city_df.write.jdbc(url="jdbc:mysql://localhost:3306/dw", table="City", mode="overwrite", properties={"user": "root", "password": "Chaitanya18"})
-sales_df.write.jdbc(url="jdbc:mysql://localhost:3306/dw", table="Sales", mode="overwrite", properties={"user": "root", "password": "Chaitanya18"})
-
+customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
+city_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "City").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
+sales_df.writeformat("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Sales").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
 
 # # Create temporary views for SQL querying
 # customer_df.createOrReplaceTempView("customer")
