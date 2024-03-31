@@ -33,12 +33,9 @@ sales_df.show()
 
 #    .option("password", "Chaitanya18").option("url", "jdbc:mysql://LAPTOP-C132R785.ht.home:3306/dw")
                                                 
-# customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
-# city_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "City").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
-# sales_df.writeformat("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Sales").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
-customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "vagrant").option("password", "Chaitanya18").mode("overwrite").save()
-city_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "City").option("user", "vagrant").option("password", "Chaitanya18").mode("overwrite").save()
-sales_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Sales").option("user", "vagrant").option("password", "Chaitanya18").mode("overwrite").save()
+customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
+city_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "City").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
+sales_df.writeformat("jdbc").option("url", "jdbc:mysql://localhost:3306/dw").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Sales").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
 
 # # Create temporary views for SQL querying
 # customer_df.createOrReplaceTempView("customer")
