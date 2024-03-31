@@ -11,12 +11,14 @@ spark = SparkSession.builder.appName("DW House").getOrCreate()
 customer_parquet = sys.argv[1]
 city_parquet = sys.argv[2]
 sales_parquet = sys.argv[3]
-
-# Load data from Parquet files
+spark.conf.set("spark.sql.parquet.outputTimestampType", "TIMESTAMP_MICROS")
 customer_df = spark.read.parquet(customer_parquet)
 city_df = spark.read.parquet(city_parquet)
 sales_df = spark.read.parquet(sales_parquet)
+# Load data from Parquet files
 
+
+customer_df.write.parquet(customer_parquet)
 
 print("Number of rows in customer_df:", customer_df.count())
 print("Number of rows in city_df:", city_df.count())
@@ -26,12 +28,6 @@ customer_df.show(5)
 city_df.show(5)
 sales_df.show()
 
-
-# customer_df.write.csv("customer.csv", header=True, mode="overwrite")
-# city_df.write.csv("city.csv", header=True, mode="overwrite")
-# sales_df.write.csv("sales.csv", header=True, mode="overwrite")
-
-#    .option("password", "Chaitanya18").option("url", "jdbc:mysql://LAPTOP-C132R785.ht.home:3306/dw")
 spark.sql("DROP TABLE IF EXISTS Customer")
 
 # Write the DataFrame to MySQL
