@@ -27,9 +27,9 @@ city_df.show(5)
 sales_df.show(5)
 
 
-customer_df.write.csv("customer.csv", header=True, mode="overwrite")
-city_df.write.csv("city.csv", header=True, mode="overwrite")
-sales_df.write.csv("sales.csv", header=True, mode="overwrite")
+# customer_df.write.csv("customer.csv", header=True, mode="overwrite")
+# city_df.write.csv("city.csv", header=True, mode="overwrite")
+# sales_df.write.csv("sales.csv", header=True, mode="overwrite")
 
 #    .option("password", "Chaitanya18").option("url", "jdbc:mysql://LAPTOP-C132R785.ht.home:3306/dw")
 
