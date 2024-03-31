@@ -18,6 +18,8 @@ sales_df = spark.read.parquet(sales_parquet)
 # Load data from Parquet files
 
 customer_df.printSchema()
+city_df.printSchema()
+sales_df.printSchema()
 
 
 print("Number of rows in customer_df:", customer_df.count())
