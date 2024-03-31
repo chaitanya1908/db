@@ -24,7 +24,7 @@ print("Number of rows in sales_df:", sales_df.count())
 
 customer_df.show(5)
 city_df.show(5)
-sales_df.show(5)
+sales_df.show()
 
 
 # customer_df.write.csv("customer.csv", header=True, mode="overwrite")
