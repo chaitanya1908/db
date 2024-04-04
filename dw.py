@@ -33,7 +33,7 @@ sales_df.show()
 spark.sql("DROP TABLE IF EXISTS Customer")
 
 # Write the DataFrame to MySQL
-customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/DW").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()                                                
+customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/DW").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("append").save()                                                
 # customer_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/DW").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Customer").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
 city_df.write.format("jdbc").option("url", "jdbc:mysql://localhost:3306/DW").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "City").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
 sales_df.writeformat("jdbc").option("url", "jdbc:mysql://localhost:3306/DW").option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "Sales").option("user", "root").option("password", "Chaitanya18").mode("overwrite").save()
